@@ -1,6 +1,9 @@
 version: 2.1
+orbs:
+  slack: circleci/slack@4.10.1
 
 jobs:
+  
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -90,6 +93,11 @@ jobs:
             cd backend
             npm install
             npm audit fix --audit-level=critical --force
+            exit 1
+      - slack/notify:
+          channel: C03K89TRV4Z
+          event: fail
+          template: basic_fail_1
 
 workflows:
   default:
@@ -103,4 +111,6 @@ workflows:
       - scan-frontend:
           requires: [build-frontend]
       - scan-backend:
+          context:
+            - slack
           requires: [build-backend]
