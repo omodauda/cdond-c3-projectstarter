@@ -118,7 +118,7 @@ jobs:
       - run:
           name: 'install tar utility'
           command: |
-            apk add --update tar
+            apk add --update tar gzip
       - run:
           name: Ensure back-end infrastructure exists
           command: |
