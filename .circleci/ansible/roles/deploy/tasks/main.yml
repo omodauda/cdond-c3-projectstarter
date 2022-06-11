@@ -32,7 +32,7 @@
 - name: extract artifact
   become: yes
   unarchive:
-    src: files/artifact.tar.gz
+    src: artifact.tar.gz
     dest: .
 
 - name: start app

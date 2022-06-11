@@ -245,7 +245,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update nodejs npm tar gzip
+            apk add --update nodejs npm tar gzip curl
             pip install awscli
       - run:
           name: Get backend url
@@ -285,7 +285,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update tar gzip ansible nodejs npm
+            apk add --update tar gzip ansible nodejs npm curl
             pip install awscli
       - run:
           name: Deploy backend
