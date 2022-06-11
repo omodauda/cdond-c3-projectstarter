@@ -203,11 +203,16 @@ jobs:
   run-migrations:
     docker:
       # Docker image here that supports NodeJS
-      - image: circleci/node:13.8.0
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - restore_cache:
           keys: [backend-build]
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update nodejs npm curl
+            pip install awscli
       - run:
           name: Run migrations
           command: |
@@ -219,7 +224,6 @@ jobs:
       - run:
           name: Send migration results to kvdb.io
           command: |
-            curl https://kvdb.io/TaUawVnzvwH98oSBFcT1RR/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
             if grep -q "has been successfully." ~/project/backend/migrations_dump.txt
             then
               curl https://kvdb.io/TaUawVnzvwH98oSBFcT1RR/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
