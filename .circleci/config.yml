@@ -118,7 +118,7 @@ jobs:
       - run:
           name: 'install tar utility'
           command: |
-            apk add --update tar gzip
+            yum install -y tar
       - run:
           name: Ensure back-end infrastructure exists
           command: |
