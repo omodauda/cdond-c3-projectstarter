@@ -323,11 +323,6 @@ jobs:
             apk add --update nodejs npm curl
             pip install awscli
       - run:
-          name: Get backend url
-          command: |
-            cd frontend
-            cat .env
-      - run:
           name: Backend smoke test.
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
