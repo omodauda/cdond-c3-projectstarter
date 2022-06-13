@@ -326,7 +326,7 @@ jobs:
           name: Get backend url
           command: |
             cd frontend
-            cat frontend/.env
+            cat .env
       - run:
           name: Backend smoke test.
           command: |
