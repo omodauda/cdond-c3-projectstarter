@@ -361,7 +361,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            pip install aws cli
+            pip install awscli
       - run:
           name: Update cloudfront distribution
           command: |
